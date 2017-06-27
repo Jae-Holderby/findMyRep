@@ -1,9 +1,27 @@
 .header {
-  color: #990000;
+  color: #ff6666;
+  text-shadow: 0.1em 0.1em 0.1em #990000;
   margin-top: 2em;
   margin-bottom: 2em; }
 
+h1 {
+  margin: 1.5em; }
+
+.inputForm {
+  opacity: .5; }
+
 .card {
-  padding: 1em; }
+  padding: 1em;
+  background-color: white; }
+
+.footer {
+  background-color: white;
+  opacity: .5;
+  color: gray; }
+
+body {
+  background-image: url("../United_States_Capitol.jpg");
+  background-position: top;
+  background-repeat: no-repeat; }
 
 /*# sourceMappingURL=base.css.map */
