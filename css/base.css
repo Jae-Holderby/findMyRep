@@ -15,7 +15,7 @@ h1 {
   height: 3em;
   font-weight: bold; }
 
-section.title {
+.title {
   display: flex;
   align-self: center; }
 
@@ -25,10 +25,13 @@ section.title {
   margin-bottom: 3em;
   background-color: rgba(77, 0, 77, 0.7); }
 
+.card-header {
+  background-color: transparent; }
+
 h4 {
   color: white;
-  margin-left: 5em;
-  margin-right: 5em; }
+  margin-left: 1em;
+  margin-right: 1em; }
 
 img.card-img-top {
   height: auto;

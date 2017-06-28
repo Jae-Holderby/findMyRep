@@ -31,7 +31,7 @@ h1 {
   font-weight: bold;
 }
 
-section.title {
+.title {
   display: flex;
   align-self: center;
 }
@@ -43,10 +43,14 @@ section.title {
   background-color: rgba($purpleDark, .7)
 }
 
+.card-header {
+  background-color: rgba(0,0,0,0);
+}
+
 h4{
   color: white;
-  margin-left: 5em;
-  margin-right: 5em;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 img.card-img-top {
