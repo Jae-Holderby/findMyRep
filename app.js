@@ -86,10 +86,12 @@ function showMyHouseRep(data) {
 
   function findParty() {
     if(data.results[0].current_party === "D") {
-    return party ="Democrat"
-  } else {
-    return party ="Republican"
-  }
+      return party = "Democrat"
+  } else if (data.results[0].current_party === "R"){
+      return party = "Republican"
+    } else {
+      return party = "Independant"
+    }
   }
 
   $(".title").append(`<h2> ${data.results[0].roles[0].state} District ${data.results[0].roles[0].district} </h2>`)
@@ -152,9 +154,11 @@ function showMySenateRep1(data) {
   function findParty() {
     if(data.results[0].current_party === "D") {
       return party = "Democrat"
-  } else {
+  } else if (data.results[0].current_party === "R"){
       return party = "Republican"
-  }
+    } else {
+      return party = "Independant"
+    }
   }
 
   $('.cards').append(
@@ -185,10 +189,12 @@ function showMySenateRep2(data) {
 
   function findParty() {
     if(data.results[0].current_party === "D") {
-    return party ="Democrat"
-  } else {
-    return party ="Republican"
-  }
+      return party = "Democrat"
+  } else if (data.results[0].current_party === "R"){
+      return party = "Republican"
+    } else {
+      return party = "Independant"
+    }
   }
 
   $('.cards').append(

@@ -9,6 +9,7 @@ $alternateDark: darken($alternate, 20%);
 $alternateComplement: complement($alternate);
 $purple: purple;
 $purpleDark: darken($purple, 10%);
+$purpleCompliment: complement($purple);
 
 .header {
   color: $alternateLight;
@@ -40,7 +41,8 @@ h1 {
   margin-top: 2em;
   margin-left: 3em;
   margin-bottom: 3em;
-  background-color: rgba($purpleDark, .7)
+  background-color: rgba($purpleDark, .7);
+  color: $alternateComplement;
 }
 
 .card-header {
@@ -60,7 +62,7 @@ img.card-img-top {
 
 div.Democrat {
   background-color: rgba($colorDark, .7);
-  color: $colorcomplement;
+  color: $alternateComplement;
 }
 
 
