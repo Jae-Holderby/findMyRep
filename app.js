@@ -2,6 +2,10 @@ $(document).ready(function () {
 
 var addressUrl = 'https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyA2-kQRQvjIHDQb3XyyUqyTPxCrT-zuee0&address='
 
+var urlSenateInfo1 = ''
+
+var urlSenateInfo2 = ''
+
 var urlHouseInfo = ''
 
 var states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
@@ -12,6 +16,7 @@ $('button').click(submitAddress)
 
 function submitAddress(event){
   event.preventDefault();
+  $('.cards').empty();
   var address = $('input').val().split(' ');
   $.ajax({
     method: "GET",
@@ -21,19 +26,84 @@ function submitAddress(event){
   .then(getHouseRepUrl)
   .then(getHouseRepInfo)
   .then(showMyHouseRep)
-  .then(function(data) {
-    $.ajax({
-      method: "GET",
-      url: "https://api.propublica.org/congress/v1/members/senate/CO/current.json",
-      headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
-    })
-    .then(function(data) {
-      console.log(data);
-    })
+  .then(findSenateReps)
+  .then(findSenateRepsUrl)
+  .then(getSenateRep1Info)
+  .then(showMySenateRep1)
+  .then(getSenateRep2Info)
+  .then(showMySenateRep2)
+}
+
+function createStateDropdown() {
+for(var i = 0; i < states.length; i++) {
+      $("select").append("<option>" + states[i] + "</option>")
+    }
+}
+
+function findSenateReps(data) {
+  var state = $('select').val();
+  return $.ajax({
+    method: "GET",
+    url: "https://api.propublica.org/congress/v1/members/senate/"+ state +"/current.json",
+    headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
+  })
+}
+function findSenateRepsUrl(data) {
+  urlSenateInfo1 = data.results[0].api_uri
+  urlSenateInfo2 = data.results[1].api_uri
+}
+
+function getSenateRep1Info(data) {
+  return $.ajax({
+  method: "GET",
+  url: urlSenateInfo1,
+  headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
   })
 }
 
+function getSenateRep2Info(data) {
+  return $.ajax({
+  method: "GET",
+  url: urlSenateInfo2,
+  headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
+  })
+}
 
+function showMySenateRep1(data) {
+  var name = data.results[0].first_name + " " + data.results[0].last_name
+  var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
+
+  var party = findParty()
+
+  function findParty() {
+    if(data.results[0].current_party === "D") {
+    return party ="Democrat"
+  } else {
+    return party ="Republican"
+  }
+  }
+
+  $('.cards').append(
+    "<div class='card col-md-5 col-lg-3'> <div class='card-header'> Senator "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ "<br>" + party + "<br>" + "Party line vote percentage: "+ "<br>" + data.results[0].roles[0].votes_with_party_pct + "%" + "<br>" + "Missed vote percentage: " + "<br>" + data.results[0].roles[0].missed_votes_pct + "%" + "<br>" + "Phone Number: " + "<br>" + data.results[0].roles[0].phone + "<br>" + "Web page: " + "<br>" + "<a target='blank' href=" + data.results[0].url + ">" + data.results[0].url + "</a> </p> </div> </div>")
+}
+
+function showMySenateRep2(data) {
+  var name = data.results[0].first_name + " " + data.results[0].last_name
+  var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
+
+  var party = findParty()
+
+  function findParty() {
+    if(data.results[0].current_party === "D") {
+    return party ="Democrat"
+  } else {
+    return party ="Republican"
+  }
+  }
+
+  $('.cards').append(
+    "<div class='card col-md-5 col-lg-3'> <div class='card-header'> Senator "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ "<br>" + party + "<br>" + "Party line vote percentage: "+ "<br>" + data.results[0].roles[0].votes_with_party_pct + "%" + "<br>" + "Missed vote percentage: " + "<br>" + data.results[0].roles[0].missed_votes_pct + "%" + "<br>" + "Phone Number: " + "<br>" + data.results[0].roles[0].phone + "<br>" + "Web page: " + "<br>" + "<a target='blank' href=" + data.results[0].url + ">" + data.results[0].url + "</a> </p> </div> </div>")
+}
 
 function findDistrictNumber(data) {
   var divisionId = data.offices[3].divisionId
@@ -57,16 +127,9 @@ function findHouseRep(data) {
   })
 
 }
-function createStateDropdown() {
-for(var i = 0; i < states.length; i++) {
-      $("select").append("<option>" + states[i] + "</option>")
-    }
-}
-
 
 function getHouseRepUrl(data) {
   urlHouseInfo =  data.results[0].api_uri;
-      console.log(data.results[0].name);
   return urlHouseInfo
 }
 
@@ -92,8 +155,8 @@ function showMyHouseRep(data) {
   }
   }
 
-  $('.cards').append("<div class='card col-4'> <div class='card-header'> Representative "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ "<br>" + party + "<br>" + "Party line vote percentage: "+ "<br>" + data.results[0].roles[0].votes_with_party_pct + "%" + "<br>" + "Missed vote percentage: " + "<br>" + data.results[0].roles[0].missed_votes_pct + "%" + "<br>" + "Phone Number: " + "<br>" + data.results[0].roles[0].phone + "<br>" + "Web page: " + "<br>" + "<a target='blank' href=" + data.results[0].url + ">" + data.results[0].url + "</a> </p> </div> </div>")
-
+  $('.cards').append(
+    "<div class='card col-md-5 col-lg-3'> <div class='card-header'> Representative "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ "<br>" + party + "<br>" + "Party line vote percentage: "+ "<br>" + data.results[0].roles[0].votes_with_party_pct + "%" + "<br>" + "Missed vote percentage: " + "<br>" + data.results[0].roles[0].missed_votes_pct + "%" + "<br>" + "Phone Number: " + "<br>" + data.results[0].roles[0].phone + "<br>" + "Web page: " + "<br>" + "<a target='blank' href=" + data.results[0].url + ">" + data.results[0].url + "</a> </p> </div> </div>")
 }
 
 })

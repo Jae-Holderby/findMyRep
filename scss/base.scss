@@ -29,13 +29,14 @@ h1 {
 }
 
 .card {
-  padding: 1em;
-  background-color: white;
+  margin-top: 2em;
+  margin-left: 3em;
+  background-color: rgba(255, 255, 255, .5);
 }
 
 img.card-img-top {
   height: auto;
-  max-width: 250px;
+  width: 250px;
 }
 
 
@@ -49,6 +50,7 @@ img.card-img-top {
 
 body{
   background-image: url("../United_States_Capitol.jpg");
-  background-position: top;
   background-repeat: no-repeat;
+  background-size: height 100%;
+  background-position: top;
 }
