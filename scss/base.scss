@@ -1,4 +1,4 @@
-$color: grey;
+$color: blue;
 $alternate: red;
 $colorLight: lighten($color, 20%);
 $colorDark: darken($color, 20%);
@@ -7,14 +7,16 @@ $complementLight: lighten($colorcomplement, 35%);
 $alternateLight: lighten($alternate, 20%);
 $alternateDark: darken($alternate, 20%);
 $alternateComplement: complement($alternate);
-
+$purple: purple;
+$purpleDark: darken($purple, 10%);
 
 .header {
   color: $alternateLight;
-  text-shadow: .1em .1em .1em $alternateDark;
+  text-shadow: .1em .1em .1em $alternateDark, -.1em -.1em .1em $alternateDark;
   margin-top: 2em;
   margin-bottom: 2em;
 }
+
 h1 {
   margin: 1.5em;
 }
@@ -28,29 +30,54 @@ h1 {
   font-weight: bold;
 }
 
+section.title {
+  display: flex;
+  align-self: center;
+}
+
 .card {
   margin-top: 2em;
   margin-left: 3em;
-  background-color: rgba(255, 255, 255, .9);
+  margin-bottom: 3em;
+  background-color: rgba($purpleDark, .7)
+}
+
+h4{
+  color: white;
 }
 
 img.card-img-top {
   height: auto;
-  width: 250px;
+  width: 100%;
 }
 
+div.Democrat {
+  background-color: rgba($colorDark, .7);
+  color: $colorcomplement;
+}
+
+
+div.Republican {
+  background-color: rgba($alternateDark, .7);
+  color: $alternateComplement;
+}
+
+a{
+  text-decoration: none;
+  color: white
+}
 
 .footer{
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1);
   opacity: .5;
-  color: $alternateLight !important;
-  text-shadow: .1em .1em .1em $alternateDark !important;
+  color: $alternateLight;
+  text-shadow: .1em .1em .1em $alternateDark;
 }
-
 
 body{
   background-image: url("../United_States_Capitol.jpg");
   background-repeat: no-repeat;
-  background-size: height 100%;
+  background-size: cover, height 100%;
   background-position: top;
+  background-color: rgba(220,220,220, 1)
 }

@@ -1,6 +1,6 @@
 .header {
   color: #ff6666;
-  text-shadow: 0.1em 0.1em 0.1em #990000;
+  text-shadow: 0.1em 0.1em 0.1em #990000, -0.1em -0.1em 0.1em #990000;
   margin-top: 2em;
   margin-bottom: 2em; }
 
@@ -14,25 +14,46 @@ h1 {
   height: 3em;
   font-weight: bold; }
 
+section.title {
+  display: flex;
+  align-self: center; }
+
 .card {
   margin-top: 2em;
   margin-left: 3em;
-  background-color: rgba(255, 255, 255, 0.9); }
+  margin-bottom: 3em;
+  background-color: rgba(77, 0, 77, 0.7); }
+
+h4 {
+  color: white; }
 
 img.card-img-top {
   height: auto;
-  width: 250px; }
+  width: 100%; }
+
+div.Democrat {
+  background-color: rgba(0, 0, 153, 0.7);
+  color: yellow; }
+
+div.Republican {
+  background-color: rgba(153, 0, 0, 0.7);
+  color: cyan; }
+
+a {
+  text-decoration: none;
+  color: white; }
 
 .footer {
   background-color: white;
   opacity: .5;
-  color: #ff6666 !important;
-  text-shadow: 0.1em 0.1em 0.1em #990000 !important; }
+  color: #ff6666;
+  text-shadow: 0.1em 0.1em 0.1em #990000; }
 
 body {
   background-image: url("../United_States_Capitol.jpg");
   background-repeat: no-repeat;
-  background-size: height 100%;
-  background-position: top; }
+  background-size: cover, height 100%;
+  background-position: top;
+  background-color: gainsboro; }
 
 /*# sourceMappingURL=base.css.map */
