@@ -17,6 +17,7 @@ $('button').click(submitAddress)
 function submitAddress(event){
   event.preventDefault();
   $('.cards').empty();
+  $('.title').empty();
   var address = $('input').val().split(' ');
   $.ajax({
     method: "GET",
@@ -91,11 +92,11 @@ function showMyHouseRep(data) {
   }
   }
 
-  $("h2").append(`${data.results[0].roles[0].state} District ${data.results[0].roles[0].district}`)
+  $(".title").append(`<h2> ${data.results[0].roles[0].state} District ${data.results[0].roles[0].district} </h2>`)
 
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
-      <div class='card-header ${party}'> <h4> Representative <br> ${name}</h4> </div>
+      <div class='card-header ${party} align-self-center'> <h4> Representative <br> ${name}</h4> </div>
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         <div class='card-block'>
         <p class='card-text'>
@@ -158,7 +159,7 @@ function showMySenateRep1(data) {
 
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
-      <div class='card-header ${party}'> <h4> Senator <br> ${name}</h4> </div>
+      <div class='card-header ${party} align-self-center'> <h4> Senator <br> ${name}</h4> </div>
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         <div class='card-block'>
         <p class='card-text'>
@@ -192,7 +193,7 @@ function showMySenateRep2(data) {
 
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
-      <div class='card-header ${party}'> <h4> Senator <br> ${name}</h4> </div>
+      <div class='card-header ${party} align-self-center'> <h4> Senator <br> ${name}</h4> </div>
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         <div class='card-block'>
         <p class='card-text'>
@@ -211,3 +212,5 @@ function showMySenateRep2(data) {
 }
 
 })
+
+// https://find-my-rep-22d32.firebaseapp.com
