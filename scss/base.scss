@@ -23,16 +23,29 @@ h1 {
   opacity: .5;
 }
 
+.input-group{
+  height: 3em;
+  font-weight: bold;
+}
+
 .card {
   padding: 1em;
   background-color: white;
 }
 
+img.card-img-top {
+  height: auto;
+  max-width: 250px;
+}
+
+
 .footer{
   background-color: white;
   opacity: .5;
-  color: $colorcomplement
+  color: $alternateLight !important;
+  text-shadow: .1em .1em .1em $alternateDark !important;
 }
+
 
 body{
   background-image: url("../United_States_Capitol.jpg");

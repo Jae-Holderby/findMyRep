@@ -20,26 +20,20 @@ function submitAddress(event){
   .then(findHouseRep)
   .then(getHouseRepUrl)
   .then(getHouseRepInfo)
+  .then(showMyHouseRep)
   .then(function(data) {
-    var name = data.results[0].first_name + " " + data.results[0].last_name
-    var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
-    var party = findParty()
-
-    function findParty() {
-      if(data.results[0].current_party === "D") {
-      return party ="Democrat"
-    } else {
-      return party ="Republican"
-    }
-    }
-
-    $('.cards').append("<div class='card col-sm-8 col-md-6 col-lg-4'> <div class='card-header'> Representative "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ party + "<br>" +" Votes with party "+ data.results[0].roles[0].votes_with_party_pct + "% of the time" +"</p> </div> </div>")
-    console.log(data);
-    console.log("Missed vote percentage", data.results[0].roles[0].missed_votes_pct + "%");
-    console.log("Phone Number",data.results[0].roles[0].phone);
-    console.log("Web page" ,data.results[0].url);
+    $.ajax({
+      method: "GET",
+      url: "https://api.propublica.org/congress/v1/members/senate/CO/current.json",
+      headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
+    })
+    .then(function(data) {
+      console.log(data);
+    })
   })
 }
+
+
 
 function findDistrictNumber(data) {
   var divisionId = data.offices[3].divisionId
@@ -84,5 +78,22 @@ headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
 })
 }
 
+function showMyHouseRep(data) {
+  var name = data.results[0].first_name + " " + data.results[0].last_name
+  var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
+
+  var party = findParty()
+
+  function findParty() {
+    if(data.results[0].current_party === "D") {
+    return party ="Democrat"
+  } else {
+    return party ="Republican"
+  }
+  }
+
+  $('.cards').append("<div class='card col-4'> <div class='card-header'> Representative "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ "<br>" + party + "<br>" + "Party line vote percentage: "+ "<br>" + data.results[0].roles[0].votes_with_party_pct + "%" + "<br>" + "Missed vote percentage: " + "<br>" + data.results[0].roles[0].missed_votes_pct + "%" + "<br>" + "Phone Number: " + "<br>" + data.results[0].roles[0].phone + "<br>" + "Web page: " + "<br>" + "<a target='blank' href=" + data.results[0].url + ">" + data.results[0].url + "</a> </p> </div> </div>")
+
+}
 
 })
