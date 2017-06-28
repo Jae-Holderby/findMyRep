@@ -84,8 +84,25 @@ function showMySenateRep1(data) {
   }
 
   $('.cards').append(
-    "<div class='card col-md-5 col-lg-3'> <div class='card-header'> Senator "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ "<br>" + party + "<br>" + "Party line vote percentage: "+ "<br>" + data.results[0].roles[0].votes_with_party_pct + "%" + "<br>" + "Missed vote percentage: " + "<br>" + data.results[0].roles[0].missed_votes_pct + "%" + "<br>" + "Phone Number: " + "<br>" + data.results[0].roles[0].phone + "<br>" + "Web page: " + "<br>" + "<a target='blank' href=" + data.results[0].url + ">" + data.results[0].url + "</a> </p> </div> </div>")
-}
+    "<div class='card col-sm-7 col-md-5 col-lg-3'>" +
+      "<div class='card-header'> Senator "+ name +" </div>"+
+        "<img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'>"+
+        "<div class='card-block'>"+
+        "<p class='card-text'>"+ "Party: "+
+          "<br>"+ party + "<br>"+
+          "Party line vote percentage: "+
+          "<br>" +    data.results[0].roles[0].votes_with_party_pct+ "%"+
+          "<br>"+"Missed vote percentage: "+"<br>"+
+          data.results[0].roles[0].missed_votes_pct + "%"+
+          "<br>" + "Phone Number: " + "<br>"+
+          data.results[0].roles[0].phone + "<br>"+
+          "Web page: "+"<br>"+"<a target='blank' href="+
+          data.results[0].url + ">" + data.results[0].url+
+          "</a>"+
+        "</p>"+
+      "</div>"+
+    "</div>")
+  }
 
 function showMySenateRep2(data) {
   var name = data.results[0].first_name + " " + data.results[0].last_name
@@ -102,7 +119,24 @@ function showMySenateRep2(data) {
   }
 
   $('.cards').append(
-    "<div class='card col-md-5 col-lg-3'> <div class='card-header'> Senator "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ "<br>" + party + "<br>" + "Party line vote percentage: "+ "<br>" + data.results[0].roles[0].votes_with_party_pct + "%" + "<br>" + "Missed vote percentage: " + "<br>" + data.results[0].roles[0].missed_votes_pct + "%" + "<br>" + "Phone Number: " + "<br>" + data.results[0].roles[0].phone + "<br>" + "Web page: " + "<br>" + "<a target='blank' href=" + data.results[0].url + ">" + data.results[0].url + "</a> </p> </div> </div>")
+    "<div class='card col-sm-7 col-md-5 col-lg-3'>" +
+      "<div class='card-header'> Senator "+ name +" </div>"+
+        "<img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'>"+
+        "<div class='card-block'>"+
+        "<p class='card-text'>"+ "Party: "+
+          "<br>"+ party + "<br>"+
+          "Party line vote percentage: "+
+          "<br>" +    data.results[0].roles[0].votes_with_party_pct+ "%"+
+          "<br>"+"Missed vote percentage: "+"<br>"+
+          data.results[0].roles[0].missed_votes_pct + "%"+
+          "<br>" + "Phone Number: " + "<br>"+
+          data.results[0].roles[0].phone + "<br>"+
+          "Web page: "+"<br>"+"<a target='blank' href="+
+          data.results[0].url + ">" + data.results[0].url+
+          "</a>"+
+        "</p>"+
+      "</div>"+
+    "</div>")
 }
 
 function findDistrictNumber(data) {
@@ -156,7 +190,24 @@ function showMyHouseRep(data) {
   }
 
   $('.cards').append(
-    "<div class='card col-md-5 col-lg-3'> <div class='card-header'> Representative "+ name +" </div> <img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'> <div class='card-block'> <p class='card-text'>"+ "Party: "+ "<br>" + party + "<br>" + "Party line vote percentage: "+ "<br>" + data.results[0].roles[0].votes_with_party_pct + "%" + "<br>" + "Missed vote percentage: " + "<br>" + data.results[0].roles[0].missed_votes_pct + "%" + "<br>" + "Phone Number: " + "<br>" + data.results[0].roles[0].phone + "<br>" + "Web page: " + "<br>" + "<a target='blank' href=" + data.results[0].url + ">" + data.results[0].url + "</a> </p> </div> </div>")
+    "<div class='card col-sm-7 col-md-5 col-lg-3'>" +
+      "<div class='card-header'> Representative "+ name +" </div>"+
+        "<img class='card-img-top img-thumbnail' src='"+ image +".jpg" +"' alt='Card image cap'>"+
+        "<div class='card-block'>"+
+        "<p class='card-text'>"+ "Party: "+
+          "<br>"+ party + "<br>"+
+          "Party line vote percentage: "+
+          "<br>" +    data.results[0].roles[0].votes_with_party_pct+ "%"+
+          "<br>"+"Missed vote percentage: "+"<br>"+
+          data.results[0].roles[0].missed_votes_pct + "%"+
+          "<br>" + "Phone Number: " + "<br>"+
+          data.results[0].roles[0].phone + "<br>"+
+          "Web page: "+"<br>"+"<a target='blank' href="+
+          data.results[0].url + ">" + data.results[0].url+
+          "</a>"+
+        "</p>"+
+      "</div>"+
+    "</div>")
 }
 
 })
