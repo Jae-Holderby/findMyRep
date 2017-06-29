@@ -14,7 +14,7 @@ $('select').change(function(){
   $('.input-group').removeClass('hideInput')
 })
 
-$('button').click(submitAddress)
+$('form').submit(submitAddress)
 
 function submitAddress(event){
   event.preventDefault();
@@ -75,7 +75,6 @@ function findHouseRep(data) {
     url:"https://api.propublica.org/congress/v1/members/house/"+ state +"/"+ findDistrictNumber(data) +"/current.json",
     headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
   })
-
 }
 
 function getHouseRepUrl(data) {
