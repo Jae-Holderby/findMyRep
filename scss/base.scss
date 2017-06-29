@@ -11,6 +11,8 @@ $purple: purple;
 $purpleDark: darken($purple, 10%);
 $purpleCompliment: complement($purple);
 
+$error: lighten($alternate, 15%);
+
 .header {
   color: $alternateLight;
   text-shadow: .1em .1em .1em $alternateDark, -.1em -.1em .1em $alternateDark;
@@ -48,8 +50,8 @@ h1 {
 }
 
 .errorMsg {
-  color: yellow;
-  text-shadow: .1em .1em .2em black;
+  color: white;
+  text-shadow: .1em .1em .1em black, -.1em -.1em .1em black;
 }
 
 .title {

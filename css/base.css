@@ -28,8 +28,8 @@ h1 {
   display: none; }
 
 .errorMsg {
-  color: yellow;
-  text-shadow: .1em .1em .2em black; }
+  color: white;
+  text-shadow: .1em .1em .1em black, -.1em -.1em .1em black; }
 
 .title {
   display: flex;
