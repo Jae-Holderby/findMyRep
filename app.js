@@ -36,10 +36,7 @@ function submitAddress(event){
   .then(showMySenateRep1)
   .then(getSenateRep2Info)
   .then(showMySenateRep2)
-  .catch(function(e) {
-    $('.image').attr("src", "https://cdn.dribbble.com/users/266011/screenshots/2455247/404-dribbble.gif")
-    $('.cards').append(`<h2 class='errorMsg'> Error: Invalid Address!</h2>`)
-  })
+  .catch(showErrorMsg)
 }
 
 function createStateDropdown() {
@@ -116,7 +113,9 @@ function showMyHouseRep(data) {
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
       <div class='card-header align-self-center'> <h4> Representative <br> ${name}</h4> </div>
-        <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
+        <a target='blank' href=${data.results[0].url} >
+          <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
+        </a>
         <div class='card-block'>
         <p class='card-text'>
           <h5> ${party} </h5> <br>
@@ -125,7 +124,7 @@ function showMyHouseRep(data) {
           <br> <strong> Missed vote percentage: </strong> <br>
           ${data.results[0].roles[0].missed_votes_pct} %
           <br> <strong> Phone Number: </strong> <br>
-          ${data.results[0].roles[0].phone} <br> <br>
+          <a href='tel:${data.results[0].roles[0].phone}'>${data.results[0].roles[0].phone}<a/> <br> <br>
           <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
           </a>
         </p>
@@ -181,7 +180,9 @@ function showMySenateRep1(data) {
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
       <div class='card-header align-self-center'> <h4> Senator <br> ${name}</h4> </div>
+      <a target='blank' href=${data.results[0].url} >
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
+        </a>
         <div class='card-block'>
         <p class='card-text'>
           <h5> ${party} </h5> <br>
@@ -190,7 +191,7 @@ function showMySenateRep1(data) {
           <br> <strong> Missed vote percentage: </strong> <br>
           ${data.results[0].roles[0].missed_votes_pct} %
           <br> <strong> Phone Number: </strong> <br>
-          ${data.results[0].roles[0].phone} <br> <br>
+            <a href='tel:${data.results[0].roles[0].phone}'>${data.results[0].roles[0].phone}<a/> <br> <br>
           <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
           </a>
         </p>
@@ -217,7 +218,9 @@ function showMySenateRep2(data) {
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
       <div class='card-header align-self-center'> <h4> Senator <br> ${name}</h4> </div>
+      <a target='blank' href=${data.results[0].url} >
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
+        </a>
         <div class='card-block'>
         <p class='card-text'>
           <h5> ${party} </h5> <br>
@@ -226,12 +229,17 @@ function showMySenateRep2(data) {
           <br> <strong> Missed vote percentage: </strong> <br>
           ${data.results[0].roles[0].missed_votes_pct} %
           <br> <strong> Phone Number: </strong> <br>
-          ${data.results[0].roles[0].phone} <br> <br>
+            <a href='tel:${data.results[0].roles[0].phone}'>${data.results[0].roles[0].phone}<a/> <br> <br>
           <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
           </a>
         </p>
       </div>
     </div>`)
+  }
+
+  function showErrorMsg(e) {
+    $('.image').attr("src", "https://cdn.dribbble.com/users/266011/screenshots/2455247/404-dribbble.gif")
+    $('.cards').append(`<h2 class='errorMsg'> Error: Invalid Address!</h2>`)
   }
 
 })
