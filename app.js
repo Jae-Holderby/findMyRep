@@ -36,6 +36,10 @@ function submitAddress(event){
   .then(showMySenateRep1)
   .then(getSenateRep2Info)
   .then(showMySenateRep2)
+  .catch(function(e) {
+    $('.image').attr("src", "https://cdn.dribbble.com/users/266011/screenshots/2455247/404-dribbble.gif")
+    $('.cards').append(`<h2 class='errorMsg'>Invalid Address</h2>`)
+  })
 }
 
 function createStateDropdown() {
@@ -231,4 +235,11 @@ function showMySenateRep2(data) {
 
 })
 
+// https://cdn.dribbble.com/users/266011/screenshots/2455247/404-dribbble.gif
+
 // https://find-my-rep-22d32.firebaseapp.com
+// http://www.atitd.org/wiki/tale6/images/d/dc/USAFlagGlitterEagleTubeAnimated.gif
+//
+// http://media.gq.com/photos/5595ba662ca275951298752e/master/w_800/hulkster.gif https://68.media.tumblr.com/2ead2e6fff4a736af9b4bf2123e2f91b/tumblr_nguj3wWubL1tsf68ao1_400.gif?
+
+// http://philly.barstoolsports.com/files/2013/08/gif2.gif
