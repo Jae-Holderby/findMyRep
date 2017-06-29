@@ -17,14 +17,17 @@ h1 {
 
 .title {
   display: flex;
-  align-self: center; }
+  align-self: center;
+  color: white;
+  text-shadow: .1em .1em .2em black, -.1em -.1em .2em black; }
 
 .card {
   margin-top: 2em;
   margin-left: 3em;
   margin-bottom: 3em;
   background-color: rgba(77, 0, 77, 0.7);
-  color: cyan; }
+  color: white;
+  text-shadow: .1em .1em .1em black; }
 
 .card-header {
   background-color: transparent; }
@@ -36,15 +39,17 @@ h4 {
 
 img.card-img-top {
   height: auto;
-  width: 100%; }
+  width: 100%;
+  box-shadow: .1em .1em .2em black; }
 
 div.Democrat {
   background-color: rgba(0, 0, 153, 0.7);
-  color: cyan; }
+  color: white; }
 
 div.Republican {
   background-color: rgba(153, 0, 0, 0.7);
-  color: cyan; }
+  color: white;
+  font-size: 1em; }
 
 a {
   text-decoration: none;

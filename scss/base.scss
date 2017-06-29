@@ -35,6 +35,8 @@ h1 {
 .title {
   display: flex;
   align-self: center;
+  color: white;
+  text-shadow: .1em .1em .2em black, -.1em -.1em .2em black;
 }
 
 .card {
@@ -42,7 +44,8 @@ h1 {
   margin-left: 3em;
   margin-bottom: 3em;
   background-color: rgba($purpleDark, .7);
-  color: $alternateComplement;
+  color: white;
+  text-shadow: .1em .1em .1em black;
 }
 
 .card-header {
@@ -58,17 +61,19 @@ h4{
 img.card-img-top {
   height: auto;
   width: 100%;
+  box-shadow: .1em .1em .2em black;
 }
 
 div.Democrat {
   background-color: rgba($colorDark, .7);
-  color: $alternateComplement;
+  color: white;
 }
 
 
 div.Republican {
   background-color: rgba($alternateDark, .7);
-  color: $alternateComplement;
+  color: white;
+  font-size: 1em;
 }
 
 a{
