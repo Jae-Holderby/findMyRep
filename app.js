@@ -10,6 +10,10 @@ var states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 
 
 createStateDropdown()
 
+$('select').change(function(){
+  $('.input-group').removeClass('hideInput')
+})
+
 $('button').click(submitAddress)
 
 function submitAddress(event){
@@ -110,13 +114,13 @@ function showMyHouseRep(data) {
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         <div class='card-block'>
         <p class='card-text'>
-          <h5> ${party} </h5>
-          Party line vote percentage:
+          <h5> ${party} </h5> <br>
+          <strong> Party line vote percentage: </strong>
           <br>    ${data.results[0].roles[0].votes_with_party_pct} %
-          <br> Missed vote percentage: <br>
+          <br> <strong> Missed vote percentage: </strong> <br>
           ${data.results[0].roles[0].missed_votes_pct} %
-          <br> Phone Number: <br>
-          ${data.results[0].roles[0].phone} <br>
+          <br> <strong> Phone Number: </strong> <br>
+          ${data.results[0].roles[0].phone} <br> <br>
           <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
           </a>
         </p>
@@ -175,19 +179,19 @@ function showMySenateRep1(data) {
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         <div class='card-block'>
         <p class='card-text'>
-          <h5> ${party} </h5>
-          Party line vote percentage:
-          <br>    ${data.results[0].roles[0].votes_with_party_pct} %
-          <br> Missed vote percentage: <br>
+          <h5> ${party} </h5> <br>
+          <strong> Party line vote percentage: </strong>
+          <br>  ${data.results[0].roles[0].votes_with_party_pct} %
+          <br> <strong> Missed vote percentage: </strong> <br>
           ${data.results[0].roles[0].missed_votes_pct} %
-          <br> Phone Number: <br>
-          ${data.results[0].roles[0].phone} <br>
-          <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.senate.gov
+          <br> <strong> Phone Number: </strong> <br>
+          ${data.results[0].roles[0].phone} <br> <br>
+          <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
           </a>
         </p>
       </div>
     </div>`)
-  }
+}
 
 function showMySenateRep2(data) {
   var name = data.results[0].first_name + " " + data.results[0].last_name
@@ -211,19 +215,19 @@ function showMySenateRep2(data) {
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         <div class='card-block'>
         <p class='card-text'>
-          <h5> ${party} </h5>
-          Party line vote percentage:
-          <br>    ${data.results[0].roles[0].votes_with_party_pct} %
-          <br> Missed vote percentage: <br>
+          <h5> ${party} </h5> <br>
+          <strong> Party line vote percentage: </strong>
+          <br>  ${data.results[0].roles[0].votes_with_party_pct} %
+          <br> <strong> Missed vote percentage: </strong> <br>
           ${data.results[0].roles[0].missed_votes_pct} %
-          <br> Phone Number: <br>
-          ${data.results[0].roles[0].phone} <br>
-           <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.senate.gov
+          <br> <strong> Phone Number: </strong> <br>
+          ${data.results[0].roles[0].phone} <br> <br>
+          <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
           </a>
         </p>
       </div>
     </div>`)
-}
+  }
 
 })
 

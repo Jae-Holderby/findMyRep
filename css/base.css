@@ -8,22 +8,31 @@ h1 {
   margin: 1.5em;
   font-weight: bold; }
 
+.state {
+  margin-left: 14.5em;
+  height: 2em;
+  width: 5em;
+  font-size: 1.5em; }
+
 .inputForm {
-  opacity: .5; }
+  opacity: .8; }
 
 .input-group {
   height: 3em;
   font-weight: bold; }
 
+.hideInput {
+  display: none; }
+
+.hide {
+  display: none; }
+
 .title {
   display: flex;
   align-self: center;
   color: white;
-  text-shadow: .1em .1em .2em black, -.1em -.1em .2em black; }
-
-.hide {
-  display: none;
-}
+  text-shadow: .1em .1em .2em black, -.1em -.1em .2em black;
+  font-weight: bolder; }
 
 .card {
   margin-top: 2em;
@@ -39,7 +48,8 @@ h1 {
 h4 {
   color: white;
   margin-left: 1em;
-  margin-right: 1em; }
+  margin-right: 1em;
+  font-weight: bolder; }
 
 img.card-img-top {
   height: auto;
@@ -58,6 +68,13 @@ div.Republican {
 a {
   text-decoration: none;
   color: white; }
+
+a:hover {
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 1em;
+  color: cyan;
+  text-shadow: 0.1em 0.1em 0.1em #4d004d; }
 
 .footer {
   background-color: white;
