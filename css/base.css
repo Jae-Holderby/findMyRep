@@ -9,10 +9,10 @@ h1 {
   font-weight: bold; }
 
 .state {
-  margin-left: 14.5em;
   height: 2em;
   width: 5em;
-  font-size: 1.5em; }
+  font-size: 1.5em;
+  margin-bottom: 1em; }
 
 .inputForm {
   opacity: .8; }

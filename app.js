@@ -106,7 +106,7 @@ function showMyHouseRep(data) {
     }
   }
 
-  $(".title").append(`<h2> ${data.results[0].roles[0].state} District ${data.results[0].roles[0].district} </h2>`)
+  $(".title").append(`<h2> District ${data.results[0].roles[0].district} </h2>`)
 
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
