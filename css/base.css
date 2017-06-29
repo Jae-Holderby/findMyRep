@@ -21,6 +21,10 @@ h1 {
   color: white;
   text-shadow: .1em .1em .2em black, -.1em -.1em .2em black; }
 
+.hide {
+  display: none;
+}
+
 .card {
   margin-top: 2em;
   margin-left: 3em;

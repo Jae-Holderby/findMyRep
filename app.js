@@ -1,12 +1,10 @@
 $(document).ready(function () {
 
 var addressUrl = 'https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyA2-kQRQvjIHDQb3XyyUqyTPxCrT-zuee0&address='
-
 var urlSenateInfo1 = ''
-
 var urlSenateInfo2 = ''
-
 var urlHouseInfo = ''
+var loading = $('.loading')
 
 var states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
 
@@ -18,6 +16,7 @@ function submitAddress(event){
   event.preventDefault();
   $('.cards').empty();
   $('.title').empty();
+  displayLoading()
   var address = $('input').val().split(' ');
   $.ajax({
     method: "GET",
@@ -39,6 +38,14 @@ function createStateDropdown() {
 for(var i = 0; i < states.length; i++) {
       $("select").append("<option>" + states[i] + "</option>")
     }
+}
+
+function displayLoading(){
+  loading.removeClass('hide')
+}
+
+function hideLodaing(){
+  loading.addClass('hide')
 }
 
 
@@ -79,6 +86,7 @@ headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
 }
 
 function showMyHouseRep(data) {
+  hideLodaing()
   var name = data.results[0].first_name + " " + data.results[0].last_name
   var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
 
@@ -109,7 +117,7 @@ function showMyHouseRep(data) {
           ${data.results[0].roles[0].missed_votes_pct} %
           <br> Phone Number: <br>
           ${data.results[0].roles[0].phone} <br>
-          <a target='blank' href=${data.results[0].url} > ${data.results[0].url}
+          <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
           </a>
         </p>
       </div>
@@ -174,7 +182,7 @@ function showMySenateRep1(data) {
           ${data.results[0].roles[0].missed_votes_pct} %
           <br> Phone Number: <br>
           ${data.results[0].roles[0].phone} <br>
-          <a target='blank' href=${data.results[0].url} > ${data.results[0].url}
+          <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.senate.gov
           </a>
         </p>
       </div>
@@ -210,7 +218,7 @@ function showMySenateRep2(data) {
           ${data.results[0].roles[0].missed_votes_pct} %
           <br> Phone Number: <br>
           ${data.results[0].roles[0].phone} <br>
-           <a target='blank' href=${data.results[0].url} > ${data.results[0].url}
+           <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.senate.gov
           </a>
         </p>
       </div>
