@@ -38,7 +38,7 @@ function submitAddress(event){
   .then(showMySenateRep2)
   .catch(function(e) {
     $('.image').attr("src", "https://cdn.dribbble.com/users/266011/screenshots/2455247/404-dribbble.gif")
-    $('.cards').append(`<h2 class='errorMsg'>Invalid Address</h2>`)
+    $('.cards').append(`<h2 class='errorMsg'> Error: Invalid Address!</h2>`)
   })
 }
 
@@ -50,6 +50,7 @@ for(var i = 0; i < states.length; i++) {
 
 function displayLoading(){
   loading.removeClass('hide')
+  $('.image').attr("src", "http://media.gq.com/photos/5595ba662ca275951298752e/master/w_800/hulkster.gif")
 }
 
 function hideLodaing(){
