@@ -14,7 +14,7 @@ $('select').change(function(){
   $('.input-group').removeClass('hideInput')
 })
 
-$('form').submit(submitAddress)
+$('.button').submit(submitAddress)
 
 function submitAddress(event){
   event.preventDefault();
@@ -91,6 +91,7 @@ headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
 }
 
 function showMyHouseRep(data) {
+  console.log(data);
   hideLodaing()
   var name = data.results[0].first_name + " " + data.results[0].last_name
   var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
