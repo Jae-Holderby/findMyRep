@@ -4,7 +4,7 @@ $colorLight: lighten($color, 20%);
 $colorDark: darken($color, 20%);
 $colorcomplement: complement($color);
 $complementLight: lighten($colorcomplement, 35%);
-$alternateLight: lighten($alternate, 20%);
+$alternateLight: lighten($alternate, 15%);
 $alternateDark: darken($alternate, 20%);
 $alternateComplement: complement($alternate);
 $purple: purple;
@@ -123,6 +123,7 @@ a{
 
 body{
   background-image: url("../United_States_Capitol.jpg");
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;

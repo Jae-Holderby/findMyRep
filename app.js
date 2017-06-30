@@ -244,11 +244,8 @@ function showMySenateRep2(data) {
 
 })
 
-// https://cdn.dribbble.com/users/266011/screenshots/2455247/404-dribbble.gif
+
 
 // https://find-my-rep-22d32.firebaseapp.com
-// http://www.atitd.org/wiki/tale6/images/d/dc/USAFlagGlitterEagleTubeAnimated.gif
-//
-// http://media.gq.com/photos/5595ba662ca275951298752e/master/w_800/hulkster.gif https://68.media.tumblr.com/2ead2e6fff4a736af9b4bf2123e2f91b/tumblr_nguj3wWubL1tsf68ao1_400.gif?
 
-// http://philly.barstoolsports.com/files/2013/08/gif2.gif
+// http://cdn.c.photoshelter.com/img-get2/I0000ytG2yLxQS4Y/fit=1000x750/us-capitol-building-and-reflection-at-night-capitol-hill-washington-h107202340.jpg

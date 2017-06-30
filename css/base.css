@@ -1,5 +1,5 @@
 .header {
-  color: #ff6666;
+  color: #ff4d4d;
   text-shadow: 0.1em 0.1em 0.1em #990000, -0.1em -0.1em 0.1em #990000;
   margin-top: 2em;
   margin-bottom: 2em; }
@@ -85,7 +85,7 @@ a:hover {
 .footer {
   background-color: white;
   opacity: .5;
-  color: #ff6666;
+  color: #ff4d4d;
   text-shadow: 0.1em 0.1em 0.1em #990000; }
 
 body {
