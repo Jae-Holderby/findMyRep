@@ -243,9 +243,3 @@ function showMySenateRep2(data) {
   }
 
 })
-
-
-
-// https://find-my-rep-22d32.firebaseapp.com
-
-// http://cdn.c.photoshelter.com/img-get2/I0000ytG2yLxQS4Y/fit=1000x750/us-capitol-building-and-reflection-at-night-capitol-hill-washington-h107202340.jpg

@@ -1,15 +1,11 @@
 $color: blue;
 $alternate: red;
-$colorLight: lighten($color, 20%);
 $colorDark: darken($color, 20%);
-$colorcomplement: complement($color);
-$complementLight: lighten($colorcomplement, 35%);
 $alternateLight: lighten($alternate, 15%);
 $alternateDark: darken($alternate, 20%);
-$alternateComplement: complement($alternate);
 $purple: purple;
 $purpleDark: darken($purple, 10%);
-$purpleCompliment: complement($purple);
+
 
 $error: lighten($alternate, 15%);
 
