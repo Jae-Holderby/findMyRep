@@ -5,7 +5,7 @@ $alternateLight: lighten($alternate, 15%);
 $alternateDark: darken($alternate, 20%);
 $purple: purple;
 $purpleDark: darken($purple, 10%);
-
+$alternateComplement: complement($alternate);
 
 $error: lighten($alternate, 15%);
 
