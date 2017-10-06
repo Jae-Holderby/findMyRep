@@ -55,34 +55,28 @@ function hideLodaing(){
 }
 
 
-function findDistrictNumber(data) {
-  var divisionId = data.offices[3].divisionId
-  var array = divisionId.split('')
-  var districtNumber = array.filter(function(numbers){
-      return numbers > 0;
-    })
-    if(districtNumber.length > 1) {
-      return "" + districtNumber[0] + districtNumber[1] + ""
-    } else {
-      return districtNumber
-    }
+function getDistrictNumber(districtInfo) {
+  var divisionId = districtInfo.offices[3].divisionId
+  return districtNumber = divisionId.replace(/\D/g, '')
 }
 
-function findHouseRep(data) {
+
+
+function findHouseRep(houseRepInfo) {
   var state = $('select').val();
   return $.ajax({
     method: "GET",
-    url:"https://api.propublica.org/congress/v1/members/house/"+ state +"/"+ findDistrictNumber(data) +"/current.json",
+    url:"https://api.propublica.org/congress/v1/members/house/"+ state +"/"+ getDistrictNumber(houseRepInfo) +"/current.json",
     headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
   })
 }
 
-function getHouseRepUrl(data) {
-  urlHouseInfo =  data.results[0].api_uri;
+function getHouseRepUrl(houseRepInfo) {
+  urlHouseInfo =  houseRepInfo.results[0].api_uri;
   return urlHouseInfo
 }
 
-function getHouseRepInfo(data) {
+function getHouseRepInfo(houseRepInfo) {
 return $.ajax({
 method: "GET",
 url: urlHouseInfo,
@@ -90,49 +84,48 @@ headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
 })
 }
 
-function showMyHouseRep(data) {
-  console.log(data);
+function showMyHouseRep(houseRepInfo) {
   hideLodaing()
-  var name = data.results[0].first_name + " " + data.results[0].last_name
-  var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
+  var name = houseRepInfo.results[0].first_name + " " + houseRepInfo.results[0].last_name
+  var image = "https://theunitedstates.io/images/congress/225x275/"+ houseRepInfo.results[0].member_id
 
   var party = findParty()
 
   function findParty() {
-    if(data.results[0].current_party === "D") {
+    if(houseRepInfo.results[0].current_party === "D") {
       return party = "Democrat"
-  } else if (data.results[0].current_party === "R"){
+  } else if (houseRepInfo.results[0].current_party === "R"){
       return party = "Republican"
     } else {
       return party = "Independant"
     }
   }
 
-  $(".title").append(`<h2> District ${data.results[0].roles[0].district} </h2>`)
+  $(".title").append(`<h2> District ${houseRepInfo.results[0].roles[0].district} </h2>`)
 
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
       <div class='card-header align-self-center'> <h4> Representative <br> ${name}</h4> </div>
-        <a target='blank' href=${data.results[0].url} >
+        <a target='blank' href=${houseRepInfo.results[0].url} >
           <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         </a>
         <div class='card-block'>
         <p class='card-text'>
           <h5> ${party} </h5> <br>
           <strong> Party line vote percentage: </strong>
-          <br>    ${data.results[0].roles[0].votes_with_party_pct} %
+          <br>    ${houseRepInfo.results[0].roles[0].votes_with_party_pct} %
           <br> <strong> Missed vote percentage: </strong> <br>
-          ${data.results[0].roles[0].missed_votes_pct} %
+          ${houseRepInfo.results[0].roles[0].missed_votes_pct} %
           <br> <strong> Phone Number: </strong> <br>
-          <a href='tel:${data.results[0].roles[0].phone}'>${data.results[0].roles[0].phone}<a/> <br> <br>
-          <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
+          <a href='tel:${houseRepInfo.results[0].roles[0].phone}'>${houseRepInfo.results[0].roles[0].phone}<a/> <br> <br>
+          <a target='blank' href=${houseRepInfo.results[0].url} > ${houseRepInfo.results[0].last_name}.house.gov
           </a>
         </p>
       </div>
     </div>`)
 }
 
-function findSenateReps(data) {
+function findSenateReps(senateRepInfo) {
   var state = $('select').val();
   return $.ajax({
     method: "GET",
@@ -140,12 +133,12 @@ function findSenateReps(data) {
     headers: {"X-API-Key": "h8MbAqUKVc70UFTS0O4qA7kZ1a5wiIR96PSUQsOm"}
   })
 }
-function findSenateRepsUrl(data) {
-  urlSenateInfo1 = data.results[0].api_uri
-  urlSenateInfo2 = data.results[1].api_uri
+function findSenateRepsUrl(senateRepInfo) {
+  urlSenateInfo1 = senateRepInfo.results[0].api_uri
+  urlSenateInfo2 = senateRepInfo.results[1].api_uri
 }
 
-function getSenateRep1Info(data) {
+function getSenateRep1Info(senateRepInfo) {
   return $.ajax({
   method: "GET",
   url: urlSenateInfo1,
@@ -153,7 +146,7 @@ function getSenateRep1Info(data) {
   })
 }
 
-function getSenateRep2Info(data) {
+function getSenateRep2Info(senateRepInfo) {
   return $.ajax({
   method: "GET",
   url: urlSenateInfo2,
@@ -161,16 +154,16 @@ function getSenateRep2Info(data) {
   })
 }
 
-function showMySenateRep1(data) {
-  var name = data.results[0].first_name + " " + data.results[0].last_name
-  var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
+function showMySenateRep1(senateInfo) {
+  var name = senateInfo.results[0].first_name + " " + senateInfo.results[0].last_name
+  var image = "https://theunitedstates.io/images/congress/225x275/"+ senateInfo.results[0].member_id
 
   var party = findParty()
 
   function findParty() {
-    if(data.results[0].current_party === "D") {
+    if(senateInfo.results[0].current_party === "D") {
       return party = "Democrat"
-  } else if (data.results[0].current_party === "R"){
+  } else if (senateInfo.results[0].current_party === "R"){
       return party = "Republican"
     } else {
       return party = "Independant"
@@ -180,35 +173,35 @@ function showMySenateRep1(data) {
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
       <div class='card-header align-self-center'> <h4> Senator <br> ${name}</h4> </div>
-      <a target='blank' href=${data.results[0].url} >
+      <a target='blank' href=${senateInfo.results[0].url} >
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         </a>
         <div class='card-block'>
         <p class='card-text'>
           <h5> ${party} </h5> <br>
           <strong> Party line vote percentage: </strong>
-          <br>  ${data.results[0].roles[0].votes_with_party_pct} %
+          <br>  ${senateInfo.results[0].roles[0].votes_with_party_pct} %
           <br> <strong> Missed vote percentage: </strong> <br>
-          ${data.results[0].roles[0].missed_votes_pct} %
+          ${senateInfo.results[0].roles[0].missed_votes_pct} %
           <br> <strong> Phone Number: </strong> <br>
-            <a href='tel:${data.results[0].roles[0].phone}'>${data.results[0].roles[0].phone}<a/> <br> <br>
-          <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
+            <a href='tel:${senateInfo.results[0].roles[0].phone}'>${senateInfo.results[0].roles[0].phone}<a/> <br> <br>
+          <a target='blank' href=${senateInfo.results[0].url} > ${senateInfo.results[0].last_name}.house.gov
           </a>
         </p>
       </div>
     </div>`)
 }
 
-function showMySenateRep2(data) {
-  var name = data.results[0].first_name + " " + data.results[0].last_name
-  var image = "https://theunitedstates.io/images/congress/225x275/"+ data.results[0].member_id
+function showMySenateRep2(senateInfo) {
+  var name = senateInfo.results[0].first_name + " " + senateInfo.results[0].last_name
+  var image = "https://theunitedstates.io/images/congress/225x275/"+ senateInfo.results[0].member_id
 
   var party = findParty()
 
   function findParty() {
-    if(data.results[0].current_party === "D") {
+    if(senateInfo.results[0].current_party === "D") {
       return party = "Democrat"
-  } else if (data.results[0].current_party === "R"){
+  } else if (senateInfo.results[0].current_party === "R"){
       return party = "Republican"
     } else {
       return party = "Independant"
@@ -218,19 +211,19 @@ function showMySenateRep2(data) {
   $('.cards').append(
     `<div class='card col-sm-7 col-md-5 col-lg-3 ${party}'>
       <div class='card-header align-self-center'> <h4> Senator <br> ${name}</h4> </div>
-      <a target='blank' href=${data.results[0].url} >
+      <a target='blank' href=${senateInfo.results[0].url} >
         <img class='card-img-top img-thumbnail' src=' ${image}.jpg' alt='Senator's Photo'>
         </a>
         <div class='card-block'>
         <p class='card-text'>
           <h5> ${party} </h5> <br>
           <strong> Party line vote percentage: </strong>
-          <br>  ${data.results[0].roles[0].votes_with_party_pct} %
+          <br>  ${senateInfo.results[0].roles[0].votes_with_party_pct} %
           <br> <strong> Missed vote percentage: </strong> <br>
-          ${data.results[0].roles[0].missed_votes_pct} %
+          ${senateInfo.results[0].roles[0].missed_votes_pct} %
           <br> <strong> Phone Number: </strong> <br>
-            <a href='tel:${data.results[0].roles[0].phone}'>${data.results[0].roles[0].phone}<a/> <br> <br>
-          <a target='blank' href=${data.results[0].url} > ${data.results[0].last_name}.house.gov
+            <a href='tel:${senateInfo.results[0].roles[0].phone}'>${senateInfo.results[0].roles[0].phone}<a/> <br> <br>
+          <a target='blank' href=${senateInfo.results[0].url} > ${senateInfo.results[0].last_name}.house.gov
           </a>
         </p>
       </div>
